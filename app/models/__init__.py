@@ -2,10 +2,10 @@ from os import getenv
 import psycopg2
 
 configs = {
-    "host": getenv("DB_HOST"),
-    "database": getenv("DB_NAME"),
-    "user": getenv("DB_USER"),
-    "password": getenv("DB_PASSWORD"),
+    'host': getenv('DB_HOST'),
+    'database': getenv('DB_NAME'),
+    'user': getenv('DB_USER'),
+    'password': getenv('DB_PASSWORD'),
 }
 
 class DatabaseConnector:
@@ -15,7 +15,6 @@ class DatabaseConnector:
         cls.cur = cls.conn.cursor()
 
     @classmethod
-    def commit_and_close(cls):
-        cls.conn.commit()
+    def cur_conn_close(cls):
         cls.cur.close()
         cls.conn.close()
